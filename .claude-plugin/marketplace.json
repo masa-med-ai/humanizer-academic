@@ -1,0 +1,27 @@
+{
+  "name": "humanizer-academic",
+  "owner": {
+    "name": "Masashi Misawa"
+  },
+  "metadata": {
+    "description": "Claude Code plugin packaging of humanizer_academic by Kentaro Matsui.",
+    "version": "2.5.1"
+  },
+  "plugins": [
+    {
+      "name": "humanizer-academic",
+      "source": "./",
+      "description": "Remove signs of AI-generated writing from English academic medical manuscripts (34 patterns + optional mechanical checker).",
+      "version": "2.5.1",
+      "author": {
+        "name": "Kentaro Matsui"
+      },
+      "keywords": [
+        "academic-writing",
+        "medical-writing",
+        "manuscript",
+        "humanizer"
+      ]
+    }
+  ]
+}

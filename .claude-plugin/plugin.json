@@ -1,0 +1,20 @@
+{
+  "name": "humanizer-academic",
+  "version": "2.5.1",
+  "description": "Remove signs of AI-generated writing from English academic medical manuscripts (34 patterns + optional mechanical checker). Claude Code plugin packaging of Kentaro Matsui's humanizer_academic skill (based on blader/humanizer).",
+  "author": {
+    "name": "Kentaro Matsui",
+    "url": "https://github.com/matsuikentaro1"
+  },
+  "homepage": "https://github.com/matsuikentaro1/humanizer_academic",
+  "repository": "https://github.com/masa-med-ai/humanizer-academic",
+  "license": "MIT",
+  "keywords": [
+    "academic-writing",
+    "medical-writing",
+    "manuscript",
+    "humanizer",
+    "ai-writing",
+    "editing"
+  ]
+}

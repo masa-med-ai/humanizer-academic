@@ -1,5 +1,5 @@
 ---
-name: humanizer_academic
+name: humanizer-academic
 version: 2.5.1
 description: |
   Remove signs of AI-generated writing from academic medical papers. Use when editing

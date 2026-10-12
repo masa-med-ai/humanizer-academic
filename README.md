@@ -2,37 +2,36 @@
 
 A skill that removes signs of AI-generated writing from academic medical papers, making them sound more natural and professionally written.
 
-The main instructions are in `SKILL.md`, with reusable examples in `references/reader-clarity.md`. Both are plain text, so you do not need Claude Code to use them. `scripts/humanizer_check.py` is an optional checker for agents that can run commands; the skill works without it.
+The main instructions are in `skills/humanizer-academic/SKILL.md`, with reusable examples in `references/reader-clarity.md` next to it. Both are plain text, so you do not need Claude Code to use them. `scripts/humanizer_check.py` is an optional checker for agents that can run commands; the skill works without it.
 
 ## Usage
 
 ### In a browser (Claude, ChatGPT, or anything that takes an attachment)
 
-1. Download [`SKILL.md`](SKILL.md) and [`references/reader-clarity.md`](references/reader-clarity.md) from this repository.
+1. Download [`SKILL.md`](skills/humanizer-academic/SKILL.md) and [`references/reader-clarity.md`](skills/humanizer-academic/references/reader-clarity.md) from this repository.
 2. Upload both files to the chat along with the text you want to edit.
 3. Ask: `Apply this skill to the following manuscript text: [your text]`
 
 That is all. No installation.
 
-You do not need the checker script in a browser chat; the skill does the same checks by hand. If your chat can run code, you can also upload [`scripts/humanizer_check.py`](scripts/humanizer_check.py), and the skill will run it on its draft.
+You do not need the checker script in a browser chat; the skill does the same checks by hand. If your chat can run code, you can also upload [`scripts/humanizer_check.py`](skills/humanizer-academic/scripts/humanizer_check.py), and the skill will run it on its draft.
 
-### In Claude Code
+### In Claude Code (plugin)
 
-Clone into your skills directory:
+This fork packages the skill as a Claude Code plugin. Install it in one step:
 
-```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/matsuikentaro1/humanizer_academic.git ~/.claude/skills/humanizer_academic
+```
+/plugin install humanizer-academic --marketplace masa-med-ai/humanizer-academic
 ```
 
-Or, from a downloaded copy of the repository:
+Or add the marketplace first, then install:
 
-```bash
-mkdir -p ~/.claude/skills/humanizer_academic/references ~/.claude/skills/humanizer_academic/scripts
-cp SKILL.md ~/.claude/skills/humanizer_academic/
-cp references/reader-clarity.md ~/.claude/skills/humanizer_academic/references/
-cp scripts/humanizer_check.py ~/.claude/skills/humanizer_academic/scripts/
 ```
+/plugin marketplace add masa-med-ai/humanizer-academic
+/plugin install humanizer-academic@humanizer-academic
+```
+
+You can invoke it explicitly with `/humanizer-academic:humanizer-academic`.
 
 #### Optional checker
 
@@ -47,7 +46,7 @@ Language models miscount words and tend to grade their own drafts generously. Wh
 It gives no score, and a candidate word is not a violation. If Python is missing, the skill does the same checks by hand. You can also run it yourself:
 
 ```bash
-python scripts/humanizer_check.py revised.txt --original original.txt
+python skills/humanizer-academic/scripts/humanizer_check.py revised.txt --original original.txt
 ```
 
 The skill loads itself when it is relevant, so you can simply ask:
@@ -135,7 +134,7 @@ Based on [Wikipedia's "Signs of AI writing"](https://en.wikipedia.org/wiki/Wikip
 |---|---------|--------|-------|
 | 34 | **Sentence rhythm & burstiness, in the service of clarity** | Uniform 18-22 word sentences; stacked conditions and unclear comparisons | Vary sentence lengths and openings in every paragraph by splitting stacked sentences and combining related supporting sentences; keep short claim sentences short |
 
-> **Reader clarity comes first.** Preserve actors, comparisons, conditions, and logical relationships. Shorten by removing low-priority or repetitive sentences rather than compressing essential meaning. Burstiness is still required in every paragraph (mandatory rhythm check), but it is obtained only through edits that keep meaning explicit, and never by merging the author's short claim sentences. See the [eight diagnostic examples](references/reader-clarity.md).
+> **Reader clarity comes first.** Preserve actors, comparisons, conditions, and logical relationships. Shorten by removing low-priority or repetitive sentences rather than compressing essential meaning. Burstiness is still required in every paragraph (mandatory rhythm check), but it is obtained only through edits that keep meaning explicit, and never by merging the author's short claim sentences. See the [eight diagnostic examples](skills/humanizer-academic/references/reader-clarity.md).
 
 ### Preserved Academic Writing (do NOT flag as AI)
 
